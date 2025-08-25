@@ -19,6 +19,8 @@ import Home from './screens/Home'
 import Album from './screens/Album'
 import AlbumList from './screens/AlbumList'
 import TrackList from './screens/TrackList'
+import FrequentlyPlayed from './screens/FrequentlyPlayed'
+import RecentlyPlayed from './screens/RecentlyPlayed'
 import Search from './screens/Search'
 import Player from './screens/Player'
 import Settings from './screens/Settings'
@@ -43,6 +45,8 @@ createRoot(document.getElementById('root')!).render(
             {/* <Route path="artists" element={<ArtistList />} />
             <Route path="artist/:artist" element={<Artist />} /> */}
             <Route path="tracks" element={<TrackList />} />
+            <Route path="frequentlyplayed" element={<FrequentlyPlayed />} />
+            <Route path="recentlyplayed" element={<RecentlyPlayed />} />
             <Route path="search" element={<Search />} />
             <Route path="player/:screen?" element={<Player />} />
             <Route path="settings" element={<Settings />} />

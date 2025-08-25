@@ -31,7 +31,7 @@ const Home = () => {
     },
     !!playlistView,
   )
-  const frequent = useItems({
+  const frequentPlayed = useItems({
     SortBy: 'PlayCount',
     SortOrder: 'Descending',
     IncludeItemTypes: 'Audio',
@@ -40,18 +40,15 @@ const Home = () => {
     Limit: 4,
     Fields: 'MediaSources',
   })
-  const recentlyPlayed = useItems(
-    {
-      SortBy: 'DatePlayed',
-      SortOrder: 'Descending',
-      IncludeItemTypes: 'Audio',
-      Recursive: true,
-      Filter: 'IsPlayed',
-      Limit: 4,
-      Fields: 'MediaSources',
-    },
-    !!musicView,
-  )
+  const recentlyPlayed = useItems({
+    SortBy: 'DatePlayed',
+    SortOrder: 'Descending',
+    IncludeItemTypes: 'Audio',
+    Recursive: true,
+    Filter: 'IsPlayed',
+    Limit: 4,
+    Fields: 'MediaSources',
+  })
   const recentlyAdded = useLatest(musicView!, { Limit: 50 }, !!musicView)
 
   return (
@@ -73,11 +70,13 @@ const Home = () => {
       )}
 
       <div className="flex flex-col md:flex-row">
-        {!frequent.isLoading && frequent.data && (
+        {!frequentPlayed.isLoading && frequentPlayed.data && (
           <div className="flex flex-1 flex-col">
-            <LinkedHeader to="/">Frequently Played</LinkedHeader>
+            <LinkedHeader to="/frequentlyplayed">
+              Frequently Played
+            </LinkedHeader>
             <div className="flex flex-col px-4">
-              {frequent.data.Items.map((item, index) => (
+              {frequentPlayed.data.Items.map((item, index) => (
                 <TrackListItem
                   key={'rp_' + index}
                   item={item}
@@ -95,7 +94,7 @@ const Home = () => {
 
         {!recentlyPlayed.isLoading && recentlyPlayed.data && (
           <div className="flex flex-1 flex-col">
-            <LinkedHeader to="/">Recently Played</LinkedHeader>
+            <LinkedHeader to="/recentlyplayed">Recently Played</LinkedHeader>
             <div className="flex flex-col px-4">
               {recentlyPlayed.data.Items.map((item, index) => (
                 <TrackListItem
