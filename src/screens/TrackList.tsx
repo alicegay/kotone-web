@@ -1,6 +1,5 @@
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { FixedSizeList } from 'react-window'
-import useSettings from '../hooks/useSettings'
 import useLibrary from '../hooks/useLibrary'
 import useQueue from '../hooks/useQueue'
 import { cn } from '../lib/cn'
@@ -12,7 +11,6 @@ import Button from '../components/Button'
 import LoadingIndicator from '../components/LoadingIndicator'
 
 const TrackList = () => {
-  const settings = useSettings()
   const { tracks } = useLibrary()
   const queue = useQueue()
   const { play } = usePlayer()

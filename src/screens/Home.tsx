@@ -115,7 +115,7 @@ const Home = () => {
 
       {!recentlyAdded.isLoading && recentlyAdded.data && (
         <div className="flex flex-col gap-1">
-          <LinkedHeader to="/">Recently Added</LinkedHeader>
+          <LinkedHeader to="/recentlyadded">Recently Added</LinkedHeader>
           <div className="flex gap-4 overflow-x-scroll px-4">
             {recentlyAdded.data.map((item) => (
               <Link key={'ra_' + item.Id} to={'/album/' + item.Id}>

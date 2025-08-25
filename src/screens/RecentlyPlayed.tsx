@@ -1,6 +1,5 @@
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { FixedSizeList } from 'react-window'
-import useSettings from '../hooks/useSettings'
 import useQueue from '../hooks/useQueue'
 import { cn } from '../lib/cn'
 import TrackListItem from '../components/TrackListItem'
@@ -12,7 +11,6 @@ import LoadingIndicator from '../components/LoadingIndicator'
 import useItems from '../api/useItems'
 
 const RecentlyPlayed = () => {
-  const settings = useSettings()
   const queue = useQueue()
   const { play } = usePlayer()
   const { showMenu, setMenu } = useMenu()
