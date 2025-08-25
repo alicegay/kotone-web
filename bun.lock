@@ -15,7 +15,7 @@
         "fast-blurhash": "1.1.4",
         "hls.js": "1.6.2",
         "idb-keyval": "6.2.1",
-        "jellyfin-api": "github:alicegay/jellyfin-api#20f4867",
+        "jellyfin-api": "github:alicegay/jellyfin-api#618e2ab",
         "material-symbols": "0.31.1",
         "motion": "12.7.3",
         "react": "19.1.0",
@@ -537,7 +537,7 @@
 
     "isexe": ["isexe@2.0.0", "", {}, "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw=="],
 
-    "jellyfin-api": ["jellyfin-api@github:alicegay/jellyfin-api#20f4867", { "peerDependencies": { "axios": "1.x" } }, "alicegay-jellyfin-api-20f4867"],
+    "jellyfin-api": ["jellyfin-api@github:alicegay/jellyfin-api#618e2ab", { "peerDependencies": { "axios": "1.x" } }, "alicegay-jellyfin-api-618e2ab"],
 
     "jiti": ["jiti@2.4.2", "", { "bin": { "jiti": "lib/jiti-cli.mjs" } }, "sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A=="],
 

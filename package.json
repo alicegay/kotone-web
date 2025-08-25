@@ -21,7 +21,7 @@
     "fast-blurhash": "1.1.4",
     "hls.js": "1.6.2",
     "idb-keyval": "6.2.1",
-    "jellyfin-api": "github:alicegay/jellyfin-api#20f4867",
+    "jellyfin-api": "github:alicegay/jellyfin-api#618e2ab",
     "material-symbols": "0.31.1",
     "motion": "12.7.3",
     "react": "19.1.0",
