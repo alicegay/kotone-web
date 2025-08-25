@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import { useDebouncedCallback } from 'use-debounce'
 import useClient from '../hooks/useClient'
 import useSettings from '../hooks/useSettings'
@@ -10,13 +10,16 @@ const NavBar = () => {
   const client = useClient()
   const settings = useSettings()
   const navigate = useNavigate()
+  const location = useLocation()
   const search = useSearch()
 
   const searchRef = useRef<HTMLInputElement>(null)
   const setQuery = useDebouncedCallback((query: string) => {
     if (query) {
       search.setQuery(query)
-      navigate('/search')
+      navigate('/search', {
+        replace: location.pathname.split('/')[1] === 'search',
+      })
     }
   }, 200)
 
