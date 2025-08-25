@@ -55,6 +55,14 @@ const NavBar = () => {
           }}
           className="hover:cursor-pointer"
         />
+        <Icon
+          icon="artist"
+          filled
+          onClick={() => {
+            navigate('/artists')
+          }}
+          className="hover:cursor-pointer"
+        />
       </div>
 
       <div className="flex grow items-center">

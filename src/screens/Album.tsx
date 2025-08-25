@@ -40,7 +40,7 @@ const Album = () => {
           <>
             <img
               src={image}
-              className="round-2 aspect-square h-96 w-96 object-cover"
+              className="round-2 aspect-square size-96 object-cover"
             />
 
             <div className="flex w-full flex-col gap-4">

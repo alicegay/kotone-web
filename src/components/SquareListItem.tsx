@@ -4,6 +4,7 @@ import useClient from '../hooks/useClient'
 import { getBlurHashAverageColor } from 'fast-blurhash'
 import cardColor from '../lib/cardColor'
 import useSettings from '../hooks/useSettings'
+import Icon from './Icon'
 
 interface Props {
   item: Item
@@ -54,10 +55,20 @@ const SquareListItem = ({ item, style, onClick, onContextMenu }: Props) => {
       onMouseEnter={() => setFocus(true)}
       onMouseLeave={() => setFocus(false)}
     >
-      <img
-        src={image!}
-        className="round aspect-square h-48 w-48 object-cover transition group-hover:brightness-125"
-      />
+      {image ? (
+        <img
+          src={image!}
+          className="round aspect-square size-48 object-cover transition group-hover:brightness-125"
+        />
+      ) : (
+        <div className="round bg-b flex aspect-square size-48 items-center justify-center object-cover transition group-hover:brightness-125">
+          <Icon
+            icon={item.Type === 'MusicArtist' ? 'artist' : 'album'}
+            filled={item.Type === 'MusicArtist'}
+            size={64}
+          />
+        </div>
+      )}
       <div className="flex w-48 flex-col">
         <div className="line-clamp-2 font-medium">{item.Name}</div>
         {'AlbumArtist' in item && (

@@ -73,7 +73,14 @@ const AlbumMenu = () => {
               navigate('/album/' + album.Id)
             }}
           />
-          <Option text="View Artist" icon="artist" iconFilled disabled />
+          <Option
+            text="View Artist"
+            icon="artist"
+            iconFilled
+            onClick={() => {
+              navigate('/artist/' + album.AlbumArtists[0].Id)
+            }}
+          />
         </>
       )}
 
