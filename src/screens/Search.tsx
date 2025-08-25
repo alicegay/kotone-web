@@ -10,6 +10,7 @@ import TrackListItem from '../components/TrackListItem'
 import Item from 'jellyfin-api/lib/types/media/Item'
 import usePlayer from '../hooks/usePlayer'
 import useMenu from '../hooks/useMenu'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 const Search = () => {
   const settings = useSettings()
@@ -20,13 +21,13 @@ const Search = () => {
   const { showMenu, setMenu } = useMenu()
 
   const query = settings.useLibrary ? formatName(search.query) : search.query
-  const items = library.songs
-    ? library.songs.filter((song) => song.Search!.includes(formatName(query)))
+  const items = library.tracks
+    ? library.tracks.filter((song) => song.Search!.includes(formatName(query)))
     : null
 
   return (
     <div className="flex h-full px-4 pt-4">
-      {items && (
+      {items ? (
         <div className="flex flex-1">
           <AutoSizer>
             {({ height, width }) => (
@@ -59,6 +60,8 @@ const Search = () => {
             )}
           </AutoSizer>
         </div>
+      ) : (
+        <LoadingIndicator />
       )}
     </div>
   )

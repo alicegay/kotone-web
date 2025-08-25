@@ -48,6 +48,13 @@ const NavBar = () => {
           }}
           className="hover:cursor-pointer"
         />
+        <Icon
+          icon="music_note"
+          onClick={() => {
+            navigate('/tracks')
+          }}
+          className="hover:cursor-pointer"
+        />
       </div>
 
       <div className="flex grow items-center">
@@ -87,14 +94,6 @@ const NavBar = () => {
           onClick={() => {
             client.signout()
           }}
-          className="hover:cursor-pointer"
-        />
-        <Icon
-          icon={settings.dark ? 'light_mode' : 'dark_mode'}
-          onClick={() => {
-            settings.setDark(!settings.dark)
-          }}
-          filled
           className="hover:cursor-pointer"
         />
         <Icon icon="settings" onClick={() => navigate('/settings')} />

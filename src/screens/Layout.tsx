@@ -64,7 +64,7 @@ const Layout = () => {
     if (albums.data) library.setAlbums(albums.data.Items)
   }, [albums.data])
 
-  const songs = useItems(
+  const tracks = useItems(
     {
       SortBy: 'Name',
       SortOrder: 'Ascending',
@@ -76,8 +76,8 @@ const Layout = () => {
   )
   useEffect(() => {
     if (albums.data) console.log('SONG LIBRARY SET')
-    if (songs.data) library.setSongs(songs.data.Items)
-  }, [songs.data])
+    if (tracks.data) library.setTracks(tracks.data.Items)
+  }, [tracks.data])
 
   useEffect(() => {
     const handleClick = () => hideMenu()

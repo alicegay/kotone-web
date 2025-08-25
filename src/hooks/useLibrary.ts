@@ -6,7 +6,7 @@ import { create } from 'zustand'
 interface LibraryStore {
   views: Item[]
   viewIDs: { [key: string]: string }
-  songs: Track[]
+  tracks: Track[]
   albums: Album[]
   artists: Item[]
   playlists: Playlist[]
@@ -15,7 +15,7 @@ interface LibraryStore {
 
   setViews: (views: Item[]) => void
   setViewIDs: (viewIDs: { [key: string]: string }) => void
-  setSongs: (songs: Item[]) => void
+  setTracks: (tracks: Item[]) => void
   setAlbums: (albums: Item[]) => void
   setArtists: (artists: Item[]) => void
   setPlaylists: (playlists: Item[]) => void
@@ -26,7 +26,7 @@ interface LibraryStore {
 const useLibrary = create<LibraryStore>()((set) => ({
   views: null,
   viewIDs: null,
-  songs: null,
+  tracks: null,
   albums: null,
   artists: null,
   playlists: null,
@@ -39,9 +39,9 @@ const useLibrary = create<LibraryStore>()((set) => ({
   setViewIDs: (viewIDs) => {
     set(() => ({ viewIDs: viewIDs }))
   },
-  setSongs: (songs) => {
-    const items = songs.map((item) => itemToType(item) as Track)
-    set(() => ({ songs: items }))
+  setTracks: (tracks) => {
+    const items = tracks.map((item) => itemToType(item) as Track)
+    set(() => ({ tracks: items }))
   },
   setAlbums: (albums) => {
     const items = albums.map((item) => itemToType(item) as Album)
