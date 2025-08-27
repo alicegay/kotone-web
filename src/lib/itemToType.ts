@@ -22,6 +22,7 @@ const itemToType = (item: Item | Track): Track | Album | Playlist | Item => {
       Album: item.Album,
       AlbumId: item.AlbumId,
       Artists: item.Artists,
+      ArtistItems: item.ArtistItems,
       AlbumArtist: item.AlbumArtist,
       AlbumArtists: item.AlbumArtists,
       AlbumPrimaryImageTag: item.AlbumPrimaryImageTag,

@@ -19,8 +19,8 @@ const Artist = () => {
   const playlist = location.pathname.split('/')[1] === 'playlists'
 
   const albums = useItems({
-    SortBy: 'Name',
-    SortOrder: 'Ascending',
+    SortBy: 'PremiereDate,ProductionYear,Sortname',
+    SortOrder: 'Descending',
     IncludeItemTypes: 'MusicAlbum',
     Recursive: true,
     ArtistIds: artistParam,
@@ -105,6 +105,7 @@ const Artist = () => {
                             >
                               <SquareListItem
                                 item={albums.data.Items[index]}
+                                showYear
                                 onContextMenu={(e) =>
                                   setMenu(e, 'album', albums.data.Items[index])
                                 }

@@ -56,7 +56,7 @@ const TrackMenu = () => {
         icon="artist"
         iconFilled
         onClick={() => {
-          navigate('/artist/' + track.AlbumArtists[0].Id)
+          navigate('/artist/' + track.ArtistItems[0].Id)
         }}
       />
     </div>

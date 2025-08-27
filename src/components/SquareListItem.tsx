@@ -8,12 +8,19 @@ import Icon from './Icon'
 
 interface Props {
   item: Item
+  showYear?: boolean
   style?: CSSProperties
   onClick?: MouseEventHandler<HTMLDivElement>
   onContextMenu?: MouseEventHandler<HTMLDivElement>
 }
 
-const SquareListItem = ({ item, style, onClick, onContextMenu }: Props) => {
+const SquareListItem = ({
+  item,
+  showYear,
+  style,
+  onClick,
+  onContextMenu,
+}: Props) => {
   const client = useClient()
   const settings = useSettings()
 
@@ -71,8 +78,13 @@ const SquareListItem = ({ item, style, onClick, onContextMenu }: Props) => {
       )}
       <div className="flex w-48 flex-col">
         <div className="line-clamp-2 font-medium">{item.Name}</div>
-        {'AlbumArtist' in item && (
+        {'AlbumArtist' in item && !showYear && (
           <div className="text-secondary line-clamp-1">{item.AlbumArtist}</div>
+        )}
+        {showYear && (
+          <div className="text-secondary line-clamp-1">
+            {item.ProductionYear}
+          </div>
         )}
       </div>
     </div>

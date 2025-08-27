@@ -7,7 +7,7 @@ const useAlbumArtists = (params: ItemsQuery, enabled: boolean = true) => {
   const client = useClient()
 
   return useQuery({
-    queryKey: ['artists', params],
+    queryKey: ['albumartists', params],
     queryFn: () => artists.albumArtists(client.api, params),
     enabled: enabled,
   })

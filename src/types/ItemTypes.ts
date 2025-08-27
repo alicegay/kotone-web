@@ -18,6 +18,7 @@ export type Track = Base & {
   Album: string
   AlbumId: string
   Artists: string[]
+  ArtistItems: { Name: string; Id: string }[]
   AlbumArtist: string
   AlbumArtists: { Name: string; Id: string }[]
   AlbumPrimaryImageTag: string
