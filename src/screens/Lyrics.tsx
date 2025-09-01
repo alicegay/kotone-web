@@ -14,7 +14,7 @@ const Lyrics = () => {
   const lyrics = useLyrics(track ? track.Id : undefined, !!track)
   const timed = lyrics.data ? 'Start' in lyrics.data.Lyrics[0] : false
   const [follow, setFollow] = useState<boolean>(true)
-  const [currentA, setCurrent] = useState<number>(0)
+  const [currentA, setCurrent] = useState<number | null>(0)
   const [current] = useDebounce(currentA, 200, { leading: true })
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -33,18 +33,29 @@ const Lyrics = () => {
         }
       }
     }
-  }, [progress])
+  }, [progress, lyrics.data, timed])
 
   useEffect(() => {
-    if (timed && follow && lyrics.data) {
-      scroller.scrollTo(current?.toString(), {
-        duration: 200,
-        smooth: true,
-        offset: -(containerRef.current.offsetHeight / 2 - 64),
-        containerId: 'lyrics',
-      })
+    if (
+      timed &&
+      follow &&
+      lyrics.data &&
+      current !== null &&
+      current !== undefined &&
+      containerRef.current
+    ) {
+      try {
+        scroller.scrollTo(current.toString(), {
+          duration: 200,
+          smooth: true,
+          offset: -(containerRef.current.offsetHeight / 2 - 64),
+          containerId: 'lyrics',
+        })
+      } catch (error) {
+        console.warn('Failed to scroll to lyric element:', error)
+      }
     }
-  }, [current, follow, timed])
+  }, [current, follow, timed, lyrics.data])
 
   useEffect(() => {
     animateScroll.scrollToTop({

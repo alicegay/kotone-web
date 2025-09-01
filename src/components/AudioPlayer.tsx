@@ -90,7 +90,9 @@ const AudioPlayer = () => {
       : 0.5
     : 1.0
   useEffect(() => {
-    if (audio.current) audio.current.volume = gain
+    if (audio.current && Number.isFinite(gain)) {
+      audio.current.volume = gain
+    }
   }, [gain])
 
   const audioSource =
