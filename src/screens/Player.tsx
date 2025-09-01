@@ -96,13 +96,13 @@ const Player = () => {
               {screen === 'lyrics' ? (
                 <Button
                   icon="queue_music"
-                  onClick={() => navigate('/player')}
+                  onClick={() => navigate('/player', { replace: true })}
                 />
               ) : (
                 <Button
                   icon="lyrics"
                   off={!lyrics.data}
-                  onClick={() => navigate('/player/lyrics')}
+                  onClick={() => navigate('/player/lyrics', { replace: true })}
                 />
               )}
               <Button

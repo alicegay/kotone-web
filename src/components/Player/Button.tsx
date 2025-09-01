@@ -6,11 +6,19 @@ interface Props {
   icon: string
   filled?: boolean
   size?: number
+  className?: string
   off?: boolean
   onClick?: MouseEventHandler<HTMLDivElement>
 }
 
-const Button = ({ icon, filled, size, off = false, onClick }: Props) => {
+const Button = ({
+  icon,
+  filled,
+  size,
+  className,
+  off = false,
+  onClick,
+}: Props) => {
   return (
     <Icon
       icon={icon}
@@ -19,6 +27,7 @@ const Button = ({ icon, filled, size, off = false, onClick }: Props) => {
       className={cn(
         'rounded-full p-4 transition hover:cursor-pointer hover:bg-zinc-100/20',
         off && 'text-zinc-100/40',
+        className,
       )}
       onClick={onClick}
     />

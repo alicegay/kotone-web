@@ -46,14 +46,16 @@ const Album = () => {
             <div className="flex w-full flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <div className="text-4xl font-bold">{album.data.Name}</div>
-                <div className="text-secondary flex gap-4 text-2xl font-medium">
-                  {album.data.AlbumArtists.map((artist, index) => (
-                    <Link to={'/artist/' + artist.Id}>
-                      {artist.Name}
-                      {index < album.data.AlbumArtists.length - 1 ? ',' : ''}
-                    </Link>
-                  ))}
-                </div>
+                {!playlist && (
+                  <div className="text-secondary flex gap-4 text-2xl font-medium">
+                    {album.data.AlbumArtists.map((artist, index) => (
+                      <Link to={'/artist/' + artist.Id}>
+                        {artist.Name}
+                        {index < album.data.AlbumArtists.length - 1 ? ',' : ''}
+                      </Link>
+                    ))}
+                  </div>
+                )}
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="flex flex-wrap gap-4">
                     <div>

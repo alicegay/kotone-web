@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import Item from 'jellyfin-api/lib/types/media/Item'
 import { Album, Track } from '../types/ItemTypes'
 
-type Types = 'track' | 'album' | 'artist'
+type Types = 'track' | 'album' | 'artist' | 'queue'
 
 interface MenuStore {
   showMenu: boolean

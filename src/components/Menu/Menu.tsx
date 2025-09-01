@@ -3,6 +3,7 @@ import { Blurhash } from 'react-blurhash'
 import useMenu from '../../hooks/useMenu'
 import TrackMenu from './TrackMenu'
 import AlbumMenu from './AlbumMenu'
+import QueueMenu from './QueueMenu'
 
 const Menu = () => {
   const menu = useMenu()
@@ -43,6 +44,7 @@ const Menu = () => {
           </div>
           {menu.type === 'track' && <TrackMenu />}
           {menu.type === 'album' && <AlbumMenu />}
+          {menu.type === 'queue' && <QueueMenu />}
         </motion.div>
       )}
     </AnimatePresence>

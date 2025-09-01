@@ -13,6 +13,7 @@ import { cn } from '../lib/cn'
 import TrackListItem from '../components/TrackListItem'
 import Item from 'jellyfin-api/lib/types/media/Item'
 import { Track } from '../types/ItemTypes'
+import Button from '../components/Player/Button'
 
 interface RowProps {
   data: Track[]
@@ -58,7 +59,7 @@ const Row = ({ data, index, style }: RowProps) => {
 
 const Queue = () => {
   const queue = useQueue()
-  const { showMenu } = useMenu()
+  const { showMenu, setMenu } = useMenu()
   const listRef = useRef<FixedSizeList>(null)
 
   const onDragEnd = (result: DropResult) => {
@@ -74,11 +75,18 @@ const Queue = () => {
 
   return (
     <div className="flex h-full flex-col gap-4 px-4 pt-4">
-      <div
-        className="hover:bg-highlight round relative -left-3 mx-1 flex flex-row px-3 py-1 transition hover:cursor-pointer"
-        onClick={() => listRef.current.scrollToItem(queue.track, 'center')}
-      >
-        <h1 className="text-3xl font-bold">Queue</h1>
+      <div className="flex items-center">
+        <div
+          className="hover:bg-highlight round relative -left-3 mx-1 flex grow flex-row px-3 py-1 transition hover:cursor-pointer"
+          onClick={() => listRef.current.scrollToItem(queue.track, 'center')}
+        >
+          <h1 className="text-3xl font-bold">Queue</h1>
+        </div>
+        <Button
+          icon="more_vert"
+          className="p-2.5"
+          onClick={(e) => setTimeout(() => setMenu(e, 'queue'), 10)}
+        />
       </div>
       <div className="flex h-full">
         <AutoSizer>
