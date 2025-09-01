@@ -107,6 +107,7 @@ const TrackList = () => {
                       }}
                       onContextMenu={(e) => setMenu(e, 'track', tracks[index])}
                       playing={tracks[index].Id === queue.trackID}
+                      showLike
                     />
                   )}
                 </FixedSizeList>

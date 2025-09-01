@@ -21,9 +21,11 @@ interface LibraryStore {
   setPlaylists: (playlists: Item[]) => void
   setFavorites: (favorites: Item[]) => void
   setMusicvideos: (musicvideos: Item[]) => void
+
+  likeTrack: (ID: string, like: boolean) => void
 }
 
-const useLibrary = create<LibraryStore>()((set) => ({
+const useLibrary = create<LibraryStore>()((set, get) => ({
   views: null,
   viewIDs: null,
   tracks: null,
@@ -61,6 +63,18 @@ const useLibrary = create<LibraryStore>()((set) => ({
   setMusicvideos: (musicvideos) => {
     const items = musicvideos.map((item) => itemToType(item) as Track)
     set(() => ({ musicvideos: items }))
+  },
+
+  likeTrack: (ID, like) => {
+    const tracks = get().tracks
+    const indexes = tracks
+      .map((track, index) => (track.Id === ID ? index : -1))
+      .filter((index) => index !== -1)
+    for (let i = 0; i < indexes.length; i++) {
+      if ('UserData' in tracks[indexes[i]] && tracks[indexes[i]].UserData) {
+        tracks[indexes[i]].UserData!.IsFavorite = like
+      }
+    }
   },
 }))
 
