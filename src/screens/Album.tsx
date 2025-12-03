@@ -12,10 +12,14 @@ import useMenu from '../hooks/useMenu'
 import { cn } from '../lib/cn'
 import Button from '../components/Button'
 import LoadingIndicator from '../components/LoadingIndicator'
+import { getBlurHashAverageColor } from 'fast-blurhash'
+import cardColor from '../lib/cardColor'
+import useSettings from '../hooks/useSettings'
 
 const Album = () => {
   const { album: albumParam } = useParams()
   const client = useClient()
+  const settings = useSettings()
   const queue = useQueue()
   const { play } = usePlayer()
   const { showMenu, setMenu } = useMenu()
@@ -32,6 +36,20 @@ const Album = () => {
     : undefined
 
   const image = client.server + '/Items/' + albumParam + '/Images/Primary'
+  const blurhash =
+    album.data && !album.isLoading
+      ? 'Primary' in album.data.ImageBlurHashes
+        ? album.data.ImageBlurHashes.Primary[
+            'Primary' in album.data.ImageTags
+              ? album.data.ImageTags.Primary
+              : album.data.AlbumPrimaryImageTag
+          ]
+        : null
+      : null
+  const average = blurhash ? getBlurHashAverageColor(blurhash) : null
+  const color = average
+    ? cardColor({ r: average[0], g: average[1], b: average[2] }, settings.dark)
+    : '#f4f4f560'
 
   return (
     <div className="h-full px-4 pt-4">
@@ -131,7 +149,7 @@ const Album = () => {
                       itemSize={72}
                       className={cn(
                         'player-padding',
-                        showMenu && 'overflow-y-hidden!',
+                        //showMenu && 'overflow-y-hidden!',
                       )}
                     >
                       {({ index, style }) => (

@@ -57,7 +57,7 @@ const ArtistList = () => {
                     )}
                     className={cn(
                       'player-padding',
-                      showMenu && 'overflow-y-hidden!',
+                      //showMenu && 'overflow-y-hidden!',
                     )}
                   >
                     {({ columnIndex, rowIndex, style }) => {

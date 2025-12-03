@@ -99,7 +99,7 @@ const FrequentlyPlayed = () => {
                   itemSize={72}
                   className={cn(
                     'player-padding',
-                    showMenu && 'overflow-y-hidden!',
+                    //showMenu && 'overflow-y-hidden!',
                   )}
                 >
                   {({ index, style }) => (

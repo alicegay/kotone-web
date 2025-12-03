@@ -113,7 +113,7 @@ const Queue = () => {
                     height={height}
                     itemCount={queue.queue.length}
                     itemSize={72}
-                    className={cn('pb-4', showMenu && 'overflow-y-hidden!')}
+                    className={cn('pb-4' /*showMenu && 'overflow-y-hidden!'*/)}
                     outerRef={provided.innerRef}
                     itemData={queue.queue}
                   >

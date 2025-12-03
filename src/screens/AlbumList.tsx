@@ -65,7 +65,7 @@ const AlbumList = () => {
                     rowCount={Math.ceil(albums.data.Items.length / columnCount)}
                     className={cn(
                       'player-padding',
-                      showMenu && 'overflow-y-hidden!',
+                      //showMenu && 'overflow-y-hidden!',
                     )}
                   >
                     {({ columnIndex, rowIndex, style }) => {

@@ -4,6 +4,22 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+*::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: --alpha(var(--color-zinc-100) / 40%);
+  border-radius: 5px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: --alpha(var(--color-zinc-100) / 60%);
+}
+
 @theme {
   --font-sans: 'Nunito', 'M PLUS Rounded 1c', sans-serif;
 }
@@ -25,6 +41,11 @@
     @apply bg-linear-160 from-purple-400 to-pink-400;
   }
 }
+
+@utility desktop-bg-primary {
+  @apply bg-linear-160 from-purple-400/10 to-pink-400/10;
+}
+
 @utility bg-w {
   @apply bg-zinc-100;
 }
@@ -71,4 +92,14 @@
 
 @utility player-padding {
   @apply pb-24;
+}
+
+@utility desktop-corner {
+  border-radius: 32px;
+  @apply overflow-hidden;
+}
+
+@utility desktop-draggable {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
 }

@@ -4,6 +4,7 @@ import useSettings from '../hooks/useSettings'
 import { cn } from '../lib/cn'
 import { UAParser } from 'ua-parser-js'
 import useClient from '../hooks/useClient'
+import isDesktop from '../lib/isDesktop'
 
 const LayoutExt = () => {
   const settings = useSettings()
@@ -64,6 +65,7 @@ const LayoutExt = () => {
       className={cn(
         'text-primary flex h-screen',
         (settings.dark || playerScreen || setupScreen) && 'dark',
+        isDesktop() && 'desktop-corner',
       )}
     >
       <Outlet />
