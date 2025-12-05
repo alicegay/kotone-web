@@ -14,14 +14,19 @@ import { cn } from '../lib/cn'
 import { Blurhash } from 'react-blurhash'
 import isDesktop from '../lib/isDesktop'
 import RPC from '../components/RPC'
+import useBlurhash from '../hooks/useBlurhash'
 
 const Layout = () => {
   const library = useLibrary()
   const settings = useSettings()
   const queue = useQueue()
-  const { showMenu, hideMenu } = useMenu()
+  const { hideMenu } = useMenu()
+  const { blurhash: globalBlurhash } = useBlurhash()
   const location = useLocation()
   const playerScreen = location.pathname.split('/')[1] === 'player'
+  const albumScreen =
+    location.pathname.split('/')[1] === 'album' ||
+    location.pathname.split('/')[1] === 'playlist'
 
   const track = queue.queue.length > 0 ? queue.queue[queue.track] : undefined
   const blurhash = track
@@ -33,6 +38,8 @@ const Layout = () => {
         ]
       : null
     : null
+  const blurhashBG =
+    !!(playerScreen && blurhash) || !!(albumScreen && globalBlurhash)
 
   const views = useViews()
   useEffect(() => {
@@ -100,24 +107,22 @@ const Layout = () => {
           !playerScreen && (isDesktop() ? 'desktop-bg-primary' : 'bg-primary'),
         )}
       >
-        {playerScreen && (
+        {blurhashBG && (
           <div
             className={cn(
               'absolute -z-100 h-screen w-full overflow-hidden bg-zinc-900',
-              isDesktop() && 'desktop-corner opacity-20',
+              isDesktop() && 'desktop-corner opacity-40',
             )}
           >
-            {blurhash && (
-              <>
-                <div className="absolute -z-90 h-screen w-full bg-zinc-900/20" />
-                <Blurhash
-                  hash={blurhash}
-                  width="100%"
-                  height="100%"
-                  className="-z-100"
-                />
-              </>
-            )}
+            <>
+              <div className="absolute -z-90 h-screen w-full bg-zinc-900/20" />
+              <Blurhash
+                hash={albumScreen ? globalBlurhash : blurhash}
+                width="100%"
+                height="100%"
+                className="-z-100"
+              />
+            </>
           </div>
         )}
 

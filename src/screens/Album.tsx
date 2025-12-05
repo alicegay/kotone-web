@@ -15,6 +15,8 @@ import LoadingIndicator from '../components/LoadingIndicator'
 import { getBlurHashAverageColor } from 'fast-blurhash'
 import cardColor from '../lib/cardColor'
 import useSettings from '../hooks/useSettings'
+import useBlurhash from '../hooks/useBlurhash'
+import { useEffect } from 'react'
 
 const Album = () => {
   const { album: albumParam } = useParams()
@@ -23,6 +25,7 @@ const Album = () => {
   const queue = useQueue()
   const { play } = usePlayer()
   const { showMenu, setMenu } = useMenu()
+  const { setBlurhash } = useBlurhash()
 
   const album = useSingleItem(albumParam)
   const playlist = album.data?.Type === 'Playlist'
@@ -50,6 +53,10 @@ const Album = () => {
   const color = average
     ? cardColor({ r: average[0], g: average[1], b: average[2] }, settings.dark)
     : '#f4f4f560'
+
+  useEffect(() => {
+    setBlurhash(blurhash ?? null)
+  }, [blurhash, setBlurhash])
 
   return (
     <div className="h-full px-4 pt-4">
@@ -90,6 +97,7 @@ const Album = () => {
                     <Button
                       icon="play_arrow"
                       filled
+                      color={color}
                       onClick={() => {
                         queue.setQueue(data.Items)
                         play()
@@ -99,6 +107,7 @@ const Album = () => {
                     </Button>
                     <Button
                       icon="shuffle"
+                      color={color}
                       onClick={() => {
                         queue.setQueue(
                           [...data!.Items].sort(() => Math.random() - 0.5),
@@ -112,6 +121,7 @@ const Album = () => {
                       <Button
                         icon="favorite"
                         filled
+                        color={color}
                         size={20}
                         onClick={() => {
                           queue.setQueue(liked)
@@ -125,6 +135,7 @@ const Album = () => {
                       <Button
                         icon="shuffle"
                         filled
+                        color={color}
                         onClick={() => {
                           queue.setQueue(
                             [...liked].sort(() => Math.random() - 0.5),

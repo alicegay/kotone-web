@@ -43,7 +43,7 @@
 }
 
 @utility desktop-bg-primary {
-  @apply bg-linear-160 from-purple-400/10 to-pink-400/10;
+  @apply bg-linear-160 from-purple-400/20 to-pink-400/20;
 }
 
 @utility bg-w {
