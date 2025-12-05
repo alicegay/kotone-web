@@ -104,7 +104,7 @@ const Layout = () => {
       <div
         className={cn(
           'flex w-full flex-col overflow-hidden',
-          !playerScreen && (isDesktop() ? 'desktop-bg-primary' : 'bg-primary'),
+          !blurhashBG && (isDesktop() ? 'desktop-bg-primary' : 'bg-primary'),
         )}
       >
         {blurhashBG && (
