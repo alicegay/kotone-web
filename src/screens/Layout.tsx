@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
 import NavBar from '../components/NavBar'
+import SideBar from '../components/SideBar'
 import FloatingPlayer from '../components/FloatingPlayer/FloatingPlayer'
 import AudioPlayer from '../components/AudioPlayer'
 import Menu from '../components/Menu/Menu'
@@ -130,21 +131,25 @@ const Layout = () => {
 
         <NavBar />
 
-        <div
-          className={cn(
-            'h-full w-full overflow-x-hidden',
-            //!showMenu ? 'overflow-y-scroll' : 'overflow-y-hidden',
-            'overflow-y-scroll',
-          )}
-        >
-          <Outlet />
+        <div className="flex h-screen w-full flex-row overflow-hidden">
+          <SideBar />
+
+          <div
+            className={cn(
+              'h-full w-full overflow-x-hidden',
+              //!showMenu ? 'overflow-y-scroll' : 'overflow-y-hidden',
+              'overflow-y-scroll',
+            )}
+          >
+            <Outlet />
+          </div>
         </div>
 
         <FloatingPlayer />
         <Menu />
       </div>
       <AudioPlayer />
-      {isDesktop && <RPC />}
+      {isDesktop() && <RPC />}
     </>
   )
 }

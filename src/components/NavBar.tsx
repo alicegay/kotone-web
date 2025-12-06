@@ -27,9 +27,9 @@ const NavBar = () => {
 
   return (
     <div className="desktop-drag flex">
-      {isDesktop() && <div className="w-20" />}
-      <div className="flex flex-1 justify-between gap-8 px-6 py-2">
-        <div className="flex items-center gap-4">
+      {/* {isDesktop() && <div className="w-72" />} */}
+      <div className="flex flex-1 justify-between gap-8 py-2 pr-6">
+        <div className="flex w-60 items-center justify-end gap-4">
           <Icon
             icon="arrow_back"
             onClick={() => {
@@ -38,38 +38,15 @@ const NavBar = () => {
             className="hover:cursor-pointer"
           />
           <Icon
-            icon="home"
+            icon="arrow_forward"
             onClick={() => {
-              navigate('/')
-            }}
-            filled
-            className="hover:cursor-pointer"
-          />
-          <Icon
-            icon="album"
-            onClick={() => {
-              navigate('/albums')
-            }}
-            className="hover:cursor-pointer"
-          />
-          <Icon
-            icon="music_note"
-            onClick={() => {
-              navigate('/tracks')
-            }}
-            className="hover:cursor-pointer"
-          />
-          <Icon
-            icon="artist"
-            filled
-            onClick={() => {
-              navigate('/artists')
+              navigate(1)
             }}
             className="hover:cursor-pointer"
           />
         </div>
 
-        <div className="flex grow items-center">
+        <div className="flex grow items-center px-32">
           <input
             ref={searchRef}
             type="text"
@@ -101,14 +78,18 @@ const NavBar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <Icon
+          {/* <Icon
             icon="logout"
             onClick={() => {
               client.signout()
             }}
             className="hover:cursor-pointer"
+          /> */}
+          <Icon
+            icon="settings"
+            onClick={() => navigate('/settings')}
+            className="hover:cursor-pointer"
           />
-          <Icon icon="settings" onClick={() => navigate('/settings')} />
         </div>
 
         {(process.env.NODE_ENV === 'development' ||
