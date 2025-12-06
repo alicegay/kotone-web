@@ -34,7 +34,7 @@ const Progress = () => {
             )}
             <div>{stream.Codec.toUpperCase()}</div>
             <div>{stream?.SampleRate / 1000} kHz</div>
-            <div>{stream?.BitDepth} bit</div>
+            <div>{stream?.BitDepth}-bit</div>
             {/* <div>{Math.round(stream.BitRate / 1000)} kbps</div> */}
           </div>
         )}

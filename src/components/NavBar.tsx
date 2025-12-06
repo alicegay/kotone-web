@@ -27,25 +27,7 @@ const NavBar = () => {
 
   return (
     <div className="desktop-drag flex">
-      {/* {isDesktop() && <div className="w-72" />} */}
       <div className="flex flex-1 justify-between gap-8 py-2 pr-6">
-        <div className="flex w-60 items-center justify-end gap-4">
-          <Icon
-            icon="arrow_back"
-            onClick={() => {
-              navigate(-1)
-            }}
-            className="hover:cursor-pointer"
-          />
-          <Icon
-            icon="arrow_forward"
-            onClick={() => {
-              navigate(1)
-            }}
-            className="hover:cursor-pointer"
-          />
-        </div>
-
         <div className="flex grow items-center px-32">
           <input
             ref={searchRef}

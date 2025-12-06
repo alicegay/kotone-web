@@ -129,25 +129,26 @@ const Layout = () => {
           </div>
         )}
 
-        <NavBar />
-
         <div className="flex h-screen w-full flex-row overflow-hidden">
           <SideBar />
-
-          <div
-            className={cn(
-              'h-full w-full overflow-x-hidden',
-              //!showMenu ? 'overflow-y-scroll' : 'overflow-y-hidden',
-              'overflow-y-scroll',
-            )}
-          >
-            <Outlet />
+          <div className="flex h-screen w-full flex-col overflow-hidden">
+            <NavBar />
+            <div
+              className={cn(
+                'h-full w-full overflow-x-hidden',
+                //!showMenu ? 'overflow-y-scroll' : 'overflow-y-hidden',
+                'overflow-y-scroll',
+              )}
+            >
+              <Outlet />
+            </div>
           </div>
         </div>
-
-        <FloatingPlayer />
-        <Menu />
       </div>
+
+      <FloatingPlayer />
+      <Menu />
+      {/* </div> */}
       <AudioPlayer />
       {isDesktop() && <RPC />}
     </>
