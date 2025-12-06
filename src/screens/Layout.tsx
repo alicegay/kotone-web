@@ -15,6 +15,7 @@ import { Blurhash } from 'react-blurhash'
 import isDesktop from '../lib/isDesktop'
 import RPC from '../components/RPC'
 import useBlurhash from '../hooks/useBlurhash'
+import isGlass from '../lib/isGlass'
 
 const Layout = () => {
   const library = useLibrary()
@@ -104,14 +105,15 @@ const Layout = () => {
       <div
         className={cn(
           'flex w-full flex-col overflow-hidden',
-          !blurhashBG && (isDesktop() ? 'desktop-bg-primary' : 'bg-primary'),
+          !blurhashBG && (isGlass() ? 'desktop-bg-primary' : 'bg-primary'),
         )}
       >
         {blurhashBG && (
           <div
             className={cn(
               'absolute -z-100 h-screen w-full overflow-hidden bg-zinc-900',
-              isDesktop() && 'desktop-corner opacity-40',
+              isDesktop() && 'desktop-corner',
+              isGlass() && 'opacity-40',
             )}
           >
             <>

@@ -99,7 +99,9 @@
   @apply overflow-hidden;
 }
 
-@utility desktop-draggable {
-  -webkit-user-select: none;
+@utility desktop-drag {
   -webkit-app-region: drag;
+}
+@utility desktop-no-drag {
+  -webkit-app-region: no-drag;
 }

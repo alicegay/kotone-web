@@ -30,7 +30,8 @@ const Progress = () => {
           <div className="flex gap-4">
             <div>{stream.Codec.toUpperCase()}</div>
             <div>{stream?.SampleRate / 1000} kHz</div>
-            <div>{Math.round(stream.BitRate / 1000)} kbps</div>
+            <div>{stream?.BitDepth} bit</div>
+            {/* <div>{Math.round(stream.BitRate / 1000)} kbps</div> */}
           </div>
         )}
         <div>{secsToTime(duration)}</div>

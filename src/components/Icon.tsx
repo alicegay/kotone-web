@@ -21,7 +21,7 @@ const Icon = ({
   return (
     <span
       className={cn(
-        'material-symbols-rounded select-none',
+        'material-symbols-rounded desktop-no-drag select-none',
         filled && 'material-symbols-filled',
         className,
       )}

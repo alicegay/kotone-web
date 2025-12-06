@@ -26,14 +26,9 @@ const NavBar = () => {
   }, 200)
 
   return (
-    <div className="flex">
-      {isDesktop() && <div className="desktop-draggable w-24" />}
-      <div
-        className={cn(
-          'flex flex-1 justify-between gap-8 px-6 py-2',
-          isDesktop() && 'pl-0',
-        )}
-      >
+    <div className="desktop-drag flex">
+      {isDesktop() && <div className="w-20" />}
+      <div className="flex flex-1 justify-between gap-8 px-6 py-2">
         <div className="flex items-center gap-4">
           <Icon
             icon="arrow_back"
@@ -79,7 +74,7 @@ const NavBar = () => {
             ref={searchRef}
             type="text"
             placeholder="Search..."
-            className="bg-w text-b grow rounded-l-2xl px-4 py-1.5"
+            className="bg-w text-b desktop-no-drag grow rounded-l-2xl px-4 py-1.5"
             onChange={(e) => setQuery(e.target.value)}
           />
           <div
@@ -118,7 +113,7 @@ const NavBar = () => {
 
         {(process.env.NODE_ENV === 'development' ||
           import.meta.env.VITE_SHOW_COMMIT) && (
-          <div className="desktop-draggable flex items-center font-mono text-sm">
+          <div className="flex items-center font-mono text-sm">
             {__COMMMIT_HASH__}
           </div>
         )}
