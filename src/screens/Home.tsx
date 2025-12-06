@@ -49,7 +49,7 @@ const Home = () => {
     Limit: 4,
     Fields: 'MediaSources',
   })
-  const recentlyAdded = useLatest(musicView!, { Limit: 50 }, !!musicView)
+  const recentlyAdded = useLatest(musicView!, { Limit: 100 }, !!musicView)
 
   return (
     <div className="player-padding flex flex-col gap-4 pt-4">

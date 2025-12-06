@@ -3,6 +3,7 @@ import usePlayer from '../../hooks/usePlayer'
 import useProgress from '../../hooks/useProgress'
 import secsToTime from '../../lib/secsToTime'
 import useSingleItem from '../../api/useSingleItem'
+import Icon from '../Icon'
 
 const Progress = () => {
   const queue = useQueue()
@@ -28,9 +29,13 @@ const Progress = () => {
         <div>{secsToTime(progress)}</div>
         {stream && (
           <div className="flex gap-4">
+            {stream?.SampleRate >= 96000 && stream?.BitDepth >= 24 && (
+              <Icon icon="high_res" filled />
+            )}
             <div>{stream.Codec.toUpperCase()}</div>
             <div>{stream?.SampleRate / 1000} kHz</div>
-            <div>{Math.round(stream.BitRate / 1000)} kbps</div>
+            <div>{stream?.BitDepth}-bit</div>
+            {/* <div>{Math.round(stream.BitRate / 1000)} kbps</div> */}
           </div>
         )}
         <div>{secsToTime(duration)}</div>
