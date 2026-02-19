@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html, body {
+  overscroll-behavior: none;
+}
+
 *::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 10px;
