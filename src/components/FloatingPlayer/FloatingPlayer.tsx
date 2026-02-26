@@ -45,7 +45,7 @@ const FloatingPlayer = () => {
           exit={{ y: 16, opacity: 0 }}
           transition={{
             duration: 0.1,
-            easings: ['easeIn', 'easeOut'],
+            ease: ['easeIn', 'easeOut'],
           }}
           onClick={() => {
             navigate('/player')

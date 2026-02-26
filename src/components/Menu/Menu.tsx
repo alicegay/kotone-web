@@ -29,7 +29,7 @@ const Menu = () => {
           exit={{ y: -8, opacity: 0 }}
           transition={{
             duration: 0.1,
-            easings: ['easeIn', 'easeOut'],
+            ease: ['easeIn', 'easeOut'],
           }}
           className="round absolute w-64 overflow-hidden text-zinc-100"
           style={{
